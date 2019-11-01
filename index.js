@@ -1,5 +1,6 @@
 const { Ultrasonic } = require('signalk-calypso-ultrasonic')()
 const debug = require('debug')('calypso-receiver')
+const discover = require('./lib/discover')
 
 const ultrasonic = new Ultrasonic({
   setRate: 1, // Hz
@@ -8,12 +9,15 @@ const ultrasonic = new Ultrasonic({
   sleep: false
 })
 
+const server = discover()
+
 // Set-up & start searching
 ultrasonic.on('delta', delta => handleDeltaMessage(delta))
 ultrasonic.start()
 
 function handleDeltaMessage (delta) {
   debug(`[delta] ${JSON.stringify(delta, null, 2)}`)
+  server.send(delta)
 }
 
 function cleanup () {
