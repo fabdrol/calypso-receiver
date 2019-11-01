@@ -1,0 +1,13 @@
+{
+  "name": "calypso-receiver",
+  "version": "1.0.0",
+  "description": "Small application that connects to a Calypso Ultrasonic wind meter and posts this to a (discovered) Signal K server",
+  "main": "index.js",
+  "repository": "git@github.com:fabdrol/calypso-receiver.git",
+  "author": "Fabian Tollenaar <fabian@decipher.industries>",
+  "license": "Apache_2",
+  "private": false,
+  "dependencies": {
+    "signalk-calypso-ultrasonic": "^1.0.12"
+  }
+}
