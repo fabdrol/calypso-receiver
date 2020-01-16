@@ -16,7 +16,7 @@ ultrasonic.on('delta', delta => handleDeltaMessage(delta))
 ultrasonic.start()
 
 function handleDeltaMessage (delta) {
-  debug(`[delta] ${JSON.stringify(delta, null, 2)}`)
+  // debug(`[delta] ${JSON.stringify(delta, null, 2)}`)
   server.send(delta)
 }
 
