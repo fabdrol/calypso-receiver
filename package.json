@@ -12,6 +12,7 @@
   "private": false,
   "dependencies": {
     "bonjour": "^3.5.0",
+    "axios": "^0.19.1",
     "signalk-calypso-ultrasonic": "^1.0.12"
   }
 }
