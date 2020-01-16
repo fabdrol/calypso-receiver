@@ -1,7 +1,10 @@
 {
   "name": "calypso-receiver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small application that connects to a Calypso Ultrasonic wind meter and posts this to a (discovered) Signal K server",
+  "scripts": {
+    "test": "DEBUG=signalk*,calypso* node ."
+  },
   "main": "index.js",
   "repository": "git@github.com:fabdrol/calypso-receiver.git",
   "author": "Fabian Tollenaar <fabian@decipher.industries>",
