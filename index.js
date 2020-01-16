@@ -15,9 +15,15 @@ const server = discover()
 ultrasonic.on('delta', delta => handleDeltaMessage(delta))
 ultrasonic.start()
 
-function handleDeltaMessage (delta) {
-  // debug(`[delta] ${JSON.stringify(delta, null, 2)}`)
-  server.send(delta)
+async function handleDeltaMessage (delta) {
+  try {
+    const items = await server.send(delta)
+    debug(`PUT ${items.length} paths`)
+  } catch (err) {
+    console.error(`[exception] ${err.message}`)
+    cleanup()
+    process.exit(1)
+  }
 }
 
 function cleanup () {
@@ -35,6 +41,7 @@ process.on('beforeExit', () => {
 })
 
 process.on('uncaughtException', (err) => {
-  console.error(`[exception] ${err.message}`);
-  process.exit()
+  console.error(`[exception] ${err.message}`)
+  cleanup()
+  process.exit(1)
 })
