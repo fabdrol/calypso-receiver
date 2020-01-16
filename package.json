@@ -8,6 +8,7 @@
   "license": "Apache_2",
   "private": false,
   "dependencies": {
+    "bonjour": "^3.5.0",
     "signalk-calypso-ultrasonic": "^1.0.12"
   }
 }
