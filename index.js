@@ -41,7 +41,8 @@ process.on('beforeExit', () => {
 })
 
 process.on('uncaughtException', (err) => {
-  console.error(`[exception] ${err.message}`)
+  console.error(`[exception index.js] ${err.message}`)
+  console.log(err.stack)
   cleanup()
   process.exit(1)
 })
