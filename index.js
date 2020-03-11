@@ -18,7 +18,10 @@ ultrasonic.start()
 async function handleDeltaMessage (delta) {
   try {
     const items = await server.send(delta)
-    debug(`PUT ${Array.isArray(items) ? items.length : ''} paths ${!Array.isArray(items) ? JSON.stringify(items, null, 2) : ''}`)
+
+    if (items && Array.isArray(items)) {
+      debug(`PUT ${items.length} paths`)
+    }
   } catch (err) {
     console.error(`[exception] ${err.message}`)
     cleanup()
@@ -41,7 +44,7 @@ process.on('beforeExit', () => {
 })
 
 process.on('uncaughtException', (err) => {
-  console.error(`[exception index.js] ${err.message}`)
+  console.error(`[uncaughtException] ${err.message}`)
   console.log(err.stack)
   cleanup()
   process.exit(1)
