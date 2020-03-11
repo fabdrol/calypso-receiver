@@ -4,7 +4,7 @@ const discover = require('./lib/discover')
 
 const ultrasonic = new Ultrasonic({
   setRate: 1, // Hz
-  setCompass: 0, // Turn on compass/9DOF sensor
+  setCompass: 1, // Turn on compass/9DOF sensor
   maxRetries: Infinity,
   sleep: false
 })
@@ -18,7 +18,7 @@ ultrasonic.start()
 async function handleDeltaMessage (delta) {
   try {
     const items = await server.send(delta)
-    debug(`PUT ${items.length} paths`)
+    debug(`PUT ${Array.isArray(items) ? items.length : ''} paths ${!Array.isArray(items) ? JSON.stringify(items, null, 2) : ''}`)
   } catch (err) {
     console.error(`[exception] ${err.message}`)
     cleanup()
