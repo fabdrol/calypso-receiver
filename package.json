@@ -11,9 +11,11 @@
   "license": "Apache_2",
   "private": false,
   "dependencies": {
+    "@signalk/client": "^2.0.4",
     "axios": "^0.19.2",
     "bonjour": "^3.5.0",
-    "signalk-calypso-ultrasonic": "^1.0.12",
+    "mdns": "^2.5.1",
+    "signalk-calypso-ultrasonic": "^1.0.14",
     "uuid": "^3.3.3",
     "xml-js": "^1.6.11"
   }
