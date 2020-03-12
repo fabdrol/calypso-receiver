@@ -17,6 +17,10 @@ ultrasonic.start()
 
 async function handleDeltaMessage (delta) {
   try {
+    if (!server.client) {
+      debug('SK Client not ready')
+    }
+
     const items = await server.send(server.client, delta)
 
     if (items && Array.isArray(items)) {
