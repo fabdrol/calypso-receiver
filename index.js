@@ -16,8 +16,6 @@ ultrasonic.on('delta', delta => handleDeltaMessage(delta))
 ultrasonic.start()
 
 async function handleDeltaMessage (delta) {
-  console.log(`[delta] ${JSON.stringify(delta)}`)
-
   try {
     const items = await server.send(delta)
 
