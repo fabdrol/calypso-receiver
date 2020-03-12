@@ -11,7 +11,7 @@
   "license": "Apache_2",
   "private": false,
   "dependencies": {
-    "@signalk/client": "^2.0.4",
+    "@signalk/client": "git+https://github.com/SignalK/signalk-js-client.git#js-mdns",
     "axios": "^0.19.2",
     "bonjour": "^3.5.0",
     "mdns": "^2.5.1",
