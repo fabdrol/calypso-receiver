@@ -17,7 +17,7 @@ ultrasonic.start()
 
 async function handleDeltaMessage (delta) {
   try {
-    const items = await server.send(delta)
+    const items = await server.send(server.client, delta)
 
     if (items && Array.isArray(items)) {
       debug(`PUT ${items.length} paths`)
