@@ -12,11 +12,7 @@
   "private": false,
   "dependencies": {
     "@signalk/client": "git+https://github.com/SignalK/signalk-js-client.git#js-mdns",
-    "axios": "^0.19.2",
     "bonjour": "^3.5.0",
-    "mdns": "^2.5.1",
-    "signalk-calypso-ultrasonic": "^1.0.14",
-    "uuid": "^3.3.3",
-    "xml-js": "^1.6.11"
+    "signalk-calypso-ultrasonic": "^1.0.14"
   }
 }
