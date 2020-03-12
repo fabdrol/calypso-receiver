@@ -1,5 +1,5 @@
 const { Ultrasonic } = require('signalk-calypso-ultrasonic')()
-const debug = require('debug')('calypso-receiver')
+const debug = require('debug')('signalk-calypso-receiver')
 const discover = require('./lib/discover')
 
 const ultrasonic = new Ultrasonic({
