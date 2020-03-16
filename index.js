@@ -17,35 +17,33 @@ ultrasonic.start()
 
 async function handleDeltaMessage (delta) {
   try {
-    const items = await server.send(delta)
-
-    if (items && Array.isArray(items)) {
-      debug(`PUT ${items.length} paths`)
-    }
+    await server.send(delta)
   } catch (err) {
-    console.error(`[exception] ${err.message}`)
+    console.error(`[exception sending delta] ${err.message}`)
     cleanup()
-    process.exit(1)
   }
 }
 
-function cleanup () {
+function cleanup (exit = true) {
   // Stop searching, disconnect & clean-up
   debug(`[cleanup]`)
   ultrasonic.stop()
   ultrasonic.disconnect()
   ultrasonic.removeAllListeners()
+
+  if (exit === true) {
+    process.exit()
+  }
 }
 
 process.on('beforeExit', () => {
   if (ultrasonic) {
-    cleanup()
+    cleanup(false)
   }
 })
 
 process.on('uncaughtException', (err) => {
-  console.error(`[uncaughtException] ${err.message}`)
+  console.error(`[uncaught exception] ${err.message}`)
   console.log(err.stack)
   cleanup()
-  process.exit(1)
 })
