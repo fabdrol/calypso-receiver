@@ -1,6 +1,6 @@
 const { Ultrasonic } = require('signalk-calypso-ultrasonic')()
 const debug = require('debug')('signalk-calypso-receiver')
-const discover = require('./lib/discover')
+// const discover = require('./lib/discover')
 
 const ultrasonic = new Ultrasonic({
   setRate: 1, // Hz
@@ -9,7 +9,7 @@ const ultrasonic = new Ultrasonic({
   sleep: false
 })
 
-const server = discover()
+// const server = discover()
 
 // Set-up & start searching
 ultrasonic.on('delta', delta => handleDeltaMessage(delta))
@@ -17,7 +17,8 @@ ultrasonic.start()
 
 async function handleDeltaMessage (delta) {
   try {
-    await server.send(delta)
+    debug(`[data ${Date.now()}] ${JSON.stringify(delta)}`)
+    // await server.send(delta)
   } catch (err) {
     console.error(`[exception sending delta] ${err.message}`)
     cleanup()
